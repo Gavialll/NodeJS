@@ -15,5 +15,8 @@ docker-compose up -d
 
 ### **Сервіс доступний да адресою http://localhost:3000/api/users**
 
+#### [Приклади запитів Postman](NodeJsApi.postman_collection.json)
+
+
 
 
