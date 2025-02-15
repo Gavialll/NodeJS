@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    networks:
+      - my-network
+    healthcheck:
+          # Перевіряємо, чи відповідає Elasticsearch.
+          test: [ "CMD", "curl", "-f", "http://localhost:9200/_cluster/health" ]
+          # Перевіряємо кожні 5 секунд
+          interval: 5s
+          # Якщо помилка, повторити 5 разів
+          retries: 5
+          timeout: 5s
+
+  app:
+    build: .
+    container_name: DealService
+    environment:
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+    depends_on:
+      elasticsearch:
+        # Додаток не запуститься, поки Elasticsearch не буде готовий щоб коректно сформувати індекси
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
