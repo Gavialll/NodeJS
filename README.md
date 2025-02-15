@@ -4,7 +4,7 @@
 
 ---
 
-## 📦 Запуск сервісу в Docker
+# 📦 Запуск сервісу в Docker
 
 ### Для запуску через docker-compose контейнерів потрібно виконати наступну команду
 ```sh 
@@ -12,13 +12,9 @@ docker-compose up -d
 ```
 ### Сервіс доступний да адресою http://localhost:3000/api/users
 
-#### Створення image з docker-compose без створення контейнерів
-```sh 
-docker-compose build
-```
 ---
 
-# Встановлення Kubernetes
+# Встановлення Kubernetes (Опційно якщо не встановлено)
 #### Переходимо в директрорію в яку будем встановлювати Kubernetes
 ```sh 
 cd C:\Windows\System32\
@@ -35,11 +31,11 @@ kubectl version --client
 
 ---
 
-# Запуск сервісу в Kubernetes
+# 📦 Запуск сервісу в Kubernetes
 ```sh 
 kubectl apply -f nodejs-app-deployment.yaml -f nodejs-app-service.yaml -f elasticsearch-deployment.yaml -f elasticsearch-service.yaml
 ```
-#### Перевіримо статуси поді в Kubernetes
+#### Перевіримо статуси подів в Kubernetes
 ```sh 
 kubectl get pods
 ```
@@ -80,8 +76,14 @@ kubectl delete deployment <deploymentName>
 
 ---
 # Додаткові команди Docker
+#### Повертає список усіх images
 ```sh 
 docker images
+```
+
+#### Створення image з docker-compose без запуску контейнерів
+```sh 
+docker-compose build
 ```
 
 
