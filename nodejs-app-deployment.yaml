@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-nodejs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-nodejs-app
+    spec:
+      containers:
+        - name: nodejs-nodejs-app
+          image: nodejs-nodejs-app
+          imagePullPolicy: Never
+          env:
+            - name: ELASTICSEARCH_HOST
+              value: http://elasticsearch:9200
+          ports:
+            - containerPort: 3000
+      restartPolicy: Always
