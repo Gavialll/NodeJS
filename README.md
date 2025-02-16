@@ -8,7 +8,7 @@
 
 ### Для запуску через docker-compose контейнерів потрібно виконати наступну команду
 ```sh 
-docker-compose up -d
+docker-compose up -d --build
 ```
 ### Сервіс доступний да адресою http://localhost:3000/api/users
 
@@ -40,6 +40,23 @@ kubectl apply -f nodejs-app-deployment.yaml -f nodejs-app-service.yaml -f elasti
 kubectl get pods
 ```
 #### Сервіс доступний да адресою http://localhost:30002/api/users
+
+---
+# KNEX
+#### Запуск KNEX для міграції БД
+```sh 
+npx knex migrate:latest
+```
+
+#### Запуск SEAD для заповнення тестовими данними
+```sh 
+npx knex seed:run --knexfile=knexfile.ts
+```
+
+#### Rollback останньої мігграції
+```sh 
+npx knex migrate:rollback --knexfile=knexfile.ts
+```
 
 ---
 # Додаткові команди для Kubernetes

@@ -9,7 +9,7 @@ let USER_INDEX_NAME = "users"
 let ORDER_INDEX_NAME = "orders"
 
 /** Checking connection */
-export async function checkConnection() {
+export async function checkConnectionElasticSearch() {
     try {
         const health = await client.cluster.health();
         console.log("✅ Connected to ElasticSearch:", health);

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nodejs-nodejs-app
 spec:
-  replicas: 1
+  replicas: 1 # Використовуєм тільки один інстанс застосунку
   selector:
     matchLabels:
       app: nodejs-nodejs-app

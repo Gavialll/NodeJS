@@ -4,12 +4,16 @@ require("dotenv").config();
 const app = express();
 const PORT: number = 3000;
 
-import { checkConnection, ensureOrderIndexExists, ensureUserIndexExists } from "../client/ElasticSearch";
+import { checkConnectionElasticSearch, ensureOrderIndexExists, ensureUserIndexExists } from "../client/ElasticSearch";
+import { checkConnectionPostgreSQL } from "../client/Postgres";
 
 // ElasticSearch connect
-checkConnection()
+checkConnectionElasticSearch()
 ensureUserIndexExists()
 ensureOrderIndexExists()
+
+// PostgreSQL connect
+checkConnectionPostgreSQL()
 
 // Middleware
 app.use(cors());
