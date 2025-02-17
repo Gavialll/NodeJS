@@ -1,16 +1,49 @@
-import {DeleteResponse, UpdateResponse} from "@elastic/elasticsearch/lib/api/types";
-import {Order} from "../entity/Order";
+import { Order } from "../entity/Order";
 
-export interface OrderRepository {
-    getOrders(page: number, pageSize: number | undefined): Promise<void | Order[]>
+class OrderRepository {
 
-    getOrderById(id: string): Promise<Order>
+    /** 📋 Get all orders */
+    async getOrders(page: number = 1, pageSize: number = 10): Promise<Order[]> {
+        const offset = (page - 1) * pageSize;
+        return Order.query()
+            .limit(pageSize)
+            .offset(offset);
+    }
 
-    searchOrder(description: string): Promise<Order[]>
+    /** 🔍 Get order by ID */
+    async getOrderById(id: string): Promise<Order | unknown> {
+        return await Order.query().findById(id).withGraphFetched('[seller.wallet, client.wallet,]')
+    }
 
-    updateOrder(order: Order): Promise<UpdateResponse>
+    /** 🔍 Search order */
+    async searchOrder(description: string): Promise<Order[]> {
+        // Отримуємо замовлення з обмеженням і офсетом
+        return await Order.query()
+            .where('description', 'ILIKE', `%${description}%`)
+            .withGraphFetched('[seller, client]');
+    }
 
-    saveOrder(order: Order): void
+    /** 🔄 Update order */
+    async updateOrder(order: Order): Promise<Order> {
+        return Order.query().upsertGraph(order, {
+            relate: true,  // Якщо зв’язок існує, оновлюємо, а не створюємо новий
+            noDelete: true // Забороняє видалення існуючих записів
+        })
+    }
 
-    deleteOrderById(id: string): Promise<DeleteResponse>;
+    /** 💾 Save order */
+    async saveOrder(order: Order): Promise<Order> {
+        const newOrder = await Order.query()
+            .insertGraph(order)
+            .returning('*');
+
+        return newOrder;
+    }
+
+    /** 🗑️ Delete order by ID */
+    async deleteOrderById(id: string): Promise<boolean> {
+        return await Order.query().deleteById(id) > 0;
+    }
 }
+
+export const orderRepository = new OrderRepository();

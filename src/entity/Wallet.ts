@@ -1,34 +1,18 @@
-import { User } from "./User";
+import { Model } from 'objection';
+import '../../db';
 
-export class Wallet {
-    private _money: number;
-
-    constructor(money: number) {
-        this._money = money;
+export class Wallet extends Model {
+    static get tableName() {
+        return 'wallets';
     }
 
-    static createFromJSON(JSON: any): Wallet {
-        return new Wallet(JSON.money);
+    static get idColumn() {
+        return 'id';
     }
 
-    get money(): number {
-        return this._money;
-    }
+    money!: number; // Поле для збереження балансу
 
-    set money(value: number) {
-        this._money = value;
-    }
-
-    pay(paymentSum: number, receiver: User) {
-        this.spendMoney(paymentSum);
-        receiver.wallet.addMoney(paymentSum)
-    }
-
-    addMoney(addMoney: number) {
-        this.money += addMoney;
-    }
-
-    spendMoney(spendMoney: number) {
-        this.money -= spendMoney
+    static createFromJSON(json: any): Wallet {
+        return new Wallet().$set(json);
     }
 }

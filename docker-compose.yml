@@ -12,34 +12,10 @@ services:
       - "5434:5432"
     networks:
       - my-network
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.2
-    container_name: elasticsearch
-    environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false
-    ports:
-      - "9200:9200"
-    networks:
-      - my-network
-    healthcheck:
-          # Перевіряємо, чи відповідає Elasticsearch.
-          test: [ "CMD", "curl", "-f", "http://localhost:9200/_cluster/health" ]
-          # Перевіряємо кожні 5 секунд
-          interval: 10s
-          # Якщо помилка, повторити 5 разів
-          retries: 5
-          timeout: 5s
 
   nodejs-app:
     build: .
     container_name: DealService
-    environment:
-      - ELASTICSEARCH_HOST=http://elasticsearch:9200
-    depends_on:
-      elasticsearch:
-        # Додаток не запуститься, поки Elasticsearch не буде готовий щоб коректно сформувати індекси
-        condition: service_healthy
     ports:
       - "3000:3000"
     networks:

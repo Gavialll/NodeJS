@@ -2,7 +2,7 @@ import { Pool } from 'pg';
 
 const pool = new Pool({
     user: 'postgres',       // Логін для БД
-    host: 'localhost',      // Адреса сервера PostgreSQL (або 'postgres', якщо в Docker Compose)
+    host: 'postgres',      // Адреса сервера PostgreSQL (або 'postgres', якщо в Docker Compose)
     database: 'mydatabase', // Назва бази даних
     password: 'postgres',   // Пароль
     port: 5432,             // Порт PostgreSQL

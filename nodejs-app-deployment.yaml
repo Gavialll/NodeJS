@@ -12,18 +12,10 @@ spec:
       labels:
         app: nodejs-nodejs-app
     spec:
-      initContainers:
-        # Чекаємо на запуск elasticsearch
-        - name: wait-for-elasticsearch
-          image: busybox
-          command: [ 'sh', '-c', 'until nc -z elasticsearch 9200; do echo waiting for elasticsearch; sleep 2; done' ]
       containers:
         - name: nodejs-nodejs-app
           image: nodejs-nodejs-app
           imagePullPolicy: Never
-          env:
-            - name: ELASTICSEARCH_HOST
-              value: http://elasticsearch:9200
           ports:
             - containerPort: 3000
       restartPolicy: Always

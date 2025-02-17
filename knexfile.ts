@@ -8,7 +8,7 @@ const config: { [key: string]: Knex.Config } = {
         client: 'pg',
         connection: {
             user: 'postgres',       // Логін для БД
-            host: 'postgres',       // Якщо в Docker, або 'localhost' якщо локально
+            host: 'localhost',
             database: 'mydatabase', // Назва бази
             password: 'postgres',   // Пароль
             port: 5434,             // Порт PostgreSQL

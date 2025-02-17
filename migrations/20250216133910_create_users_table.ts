@@ -23,7 +23,7 @@ export async function up(knex: Knex): Promise<void> {
                 .references('id')
                 .inTable('users')
                 .onDelete('CASCADE');
-            table.decimal('money', 10, 2)
+            table.integer('money')
                 .notNullable()
                 .defaultTo(0)
             table.timestamp('created_at').defaultTo(knex.fn.now());

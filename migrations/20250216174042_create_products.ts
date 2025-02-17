@@ -1,31 +1,31 @@
 import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
-    return knex.schema.createTable('products', (table) => {
+    return knex.schema.createTable('orders', (table) => {
         table.uuid('id')
             .primary()
             .defaultTo(knex.raw('gen_random_uuid()'));
-        table.decimal('price', 10, 2)
+        table.integer('price')
             .notNullable();
         table.string('description')
             .notNullable();
-        table.uuid('client_id')
+        table.uuid('clientId')
             .notNullable()
             .references('id')
             .inTable('users')
             .onDelete('CASCADE');
-        table.uuid('seller_id')
+        table.uuid('sellerId')
             .notNullable()
             .references('id')
             .inTable('users')
             .onDelete('CASCADE');
-        table.boolean('is_active')
+        table.boolean('isActive')
             .defaultTo(true);
-        table.timestamp('created_at')
+        table.timestamp('createdAt')
             .defaultTo(knex.fn.now());
     });
 }
 
 export async function down(knex: Knex): Promise<void> {
-    return knex.schema.dropTableIfExists('products');
+    return knex.schema.dropTableIfExists('orders');
 }

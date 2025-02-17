@@ -4,13 +4,8 @@ require("dotenv").config();
 const app = express();
 const PORT: number = 3000;
 
-import { checkConnectionElasticSearch, ensureOrderIndexExists, ensureUserIndexExists } from "../client/ElasticSearch";
 import { checkConnectionPostgreSQL } from "../client/Postgres";
-
-// ElasticSearch connect
-checkConnectionElasticSearch()
-ensureUserIndexExists()
-ensureOrderIndexExists()
+import '../../db';
 
 // PostgreSQL connect
 checkConnectionPostgreSQL()
@@ -22,10 +17,8 @@ app.use(express.json());
 // Add routes
 const userApi = require("./userRoutes");
 const orderApi = require("./orderRoutes");
-const userUploadApi = require("./userUploadRoutes");
 app.use("/api/users", userApi);
 app.use("/api/orders", orderApi);
-app.use("/api/upload", userUploadApi);
 
 // Start server
 app.listen(PORT, () => {
