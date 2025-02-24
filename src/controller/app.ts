@@ -4,11 +4,7 @@ require("dotenv").config();
 const app = express();
 const PORT: number = 3000;
 
-import { checkConnectionPostgreSQL } from "../client/Postgres";
 import '../../db';
-
-// PostgreSQL connect
-checkConnectionPostgreSQL()
 
 // Middleware
 app.use(cors());

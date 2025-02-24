@@ -1,5 +1,6 @@
 import { User } from "../entity/User";
 import { userRepository } from "../repository/UserRepository";
+import { UserValidator } from "../validator/UserValidator";
 
 const userRoutes = require("express").Router();
 
@@ -8,14 +9,21 @@ const ERROR_CREATION = '❌ Error creating user'
 
 /** 💾 Save user */
 userRoutes.post("/", async (req: any, res: any) => {
-    userRepository.saveUser(User.createFromJSON(req.body))
-        .then(result => {
-            if (result) {
-                res.status(201).json(result.toJSON());
-            } else {
-                res.status(400).json(ERROR_CREATION);
-            }
-        })
+    const errors = UserValidator.validate(req.body);
+
+    if (errors.length === 0) {
+        userRepository.saveUser(User.createFromJSON(req.body))
+            .then(result => {
+                if (result) {
+                    res.status(201).json(result.toJSON());
+                } else {
+                    res.status(400).json(ERROR_CREATION);
+                }
+            })
+    } else {
+        res.status(400).json(errors)
+    }
+
 });
 
 /** 🔄 Update user */

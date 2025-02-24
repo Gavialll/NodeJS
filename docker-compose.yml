@@ -9,9 +9,14 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=mydatabase
     ports:
-      - "5434:5432"
+      - "5432:5432"
     networks:
       - my-network
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 5s
+      retries: 5
+      timeout: 5s
 
   nodejs-app:
     build: .
@@ -20,6 +25,9 @@ services:
       - "3000:3000"
     networks:
       - my-network
+    depends_on:
+      postgres:
+        condition: service_healthy # Чекаємо, поки PostgreSQL буде готовий
 
 networks:
   my-network:

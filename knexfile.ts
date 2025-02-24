@@ -8,10 +8,10 @@ const config: { [key: string]: Knex.Config } = {
         client: 'pg',
         connection: {
             user: 'postgres',       // Логін для БД
-            host: 'localhost',
+            host: 'postgres',
             database: 'mydatabase', // Назва бази
             password: 'postgres',   // Пароль
-            port: 5434,             // Порт PostgreSQL
+            port: 5432,             // Порт PostgreSQL
         },
         migrations: {
             directory: './migrations',

@@ -33,7 +33,7 @@ kubectl version --client
 
 # 📦 Запуск сервісу в Kubernetes
 ```sh 
-kubectl apply -f nodejs-app-deployment.yaml -f nodejs-app-service.yaml -f elasticsearch-deployment.yaml -f elasticsearch-service.yaml
+kubectl apply -f nodejs-app-deployment.yaml -f nodejs-app-service.yaml -f postgres-deployment.yaml -f postgres-service.yaml
 ```
 #### Перевіримо статуси подів в Kubernetes
 ```sh 
