@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "tsc && node dist/src/index.js",
+    "start": "npx knex migrate:latest && npx knex seed:run --knexfile=knexfile.ts && tsc && node dist/src/index.js",
+    "migration": "npx knex migrate:latest && npx knex seed:run --knexfile=knexfile.ts",
     "test": "jest",
     "dev": "ts-node src/index.ts",
     "build": "tsc"
