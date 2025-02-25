@@ -31,10 +31,14 @@ userRoutes.put("/", (req: any, res: any) => {
     userRepository.updateUser(req.body).then(result => {
         if (result) {
             res.status(200).json(result);
-        } else {
-            res.status(400).json(USER_NOT_FOUND);
         }
-    })
+    }).catch((error) => {
+        if (error.type === 'NotFound') {
+            res.status(404).json(USER_NOT_FOUND);
+        } else {
+            res.status(400).json(error)
+        }
+    });
 });
 
 /** 📋 Get all users */
@@ -42,21 +46,21 @@ userRoutes.get("/", (req: any, res: any) => {
     userRepository.getUsers().then(result => {
         if (result) {
             res.status(200).json(result);
-        } else {
-            res.status(400).json(USER_NOT_FOUND);
         }
     })
 });
 
 /** 🔍 Get user by ID */
 userRoutes.get("/:id", (req: any, res: any) => {
-    userRepository.getUserById(req.params.id).then(result => {
+   userRepository.getUserById(req.params.id).then(result => {
         if (result) {
             res.status(200).json(result);
         } else {
-            res.status(400).json(USER_NOT_FOUND);
+            res.status(404).json(USER_NOT_FOUND);
         }
-    })
+    }).catch((error) => {
+       res.status(500).json("Internal server error");
+   });
 });
 
 /** 🔍 Search user */
@@ -64,8 +68,6 @@ userRoutes.post("/_search", (req: any, res: any) => {
     userRepository.searchUser(req.query.name).then(result => {
         if (result) {
             res.status(200).json(result);
-        } else {
-            res.status(400).json(USER_NOT_FOUND);
         }
     })
 });
@@ -76,7 +78,7 @@ userRoutes.delete("/:id", (req: any, res: any) => {
         if (result) {
             res.status(200).json(result);
         } else {
-            res.status(400).json(USER_NOT_FOUND);
+            res.status(404).json(USER_NOT_FOUND);
         }
     })
 });

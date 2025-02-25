@@ -17,7 +17,6 @@ class OrderRepository {
 
     /** 🔍 Search order */
     async searchOrder(description: string): Promise<Order[]> {
-        // Отримуємо замовлення з обмеженням і офсетом
         return await Order.query()
             .where('description', 'ILIKE', `%${description}%`)
             .withGraphFetched('[seller, client]');

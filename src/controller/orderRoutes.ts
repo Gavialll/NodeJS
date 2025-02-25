@@ -25,10 +25,14 @@ orderRoutes.put("/", (req: any, res: any) => {
     orderRepository.updateOrder(req.body).then(result => {
         if (result) {
             res.status(200).json(result);
-        } else {
-            res.status(404).json(ORDER_NOT_FOUND);
         }
-    })
+    }).catch((error) => {
+        if (error.type === 'NotFound') {
+            res.status(404).json(ORDER_NOT_FOUND);
+        } else {
+            res.status(400).json(error)
+        }
+    });
 });
 
 /** 📋 Get all orders */
@@ -50,7 +54,9 @@ orderRoutes.get("/:id", (req: any, res: any) => {
         } else {
             res.status(404).json(ORDER_NOT_FOUND);
         }
-    })
+    }).catch((error) => {
+        res.status(500).json("Internal server error");
+    });
 });
 
 /** 🔍 Search order */

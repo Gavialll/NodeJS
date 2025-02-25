@@ -15,7 +15,7 @@ class UserRepository {
     /** 🔍 Search user */
     async searchUser(name: string): Promise<User[]> {
         return await User.query()
-            .where('name', 'ILIKE', `%${name}%`) // 🔍 Пошук по імені, нечутливий до регістру
+            .where('name', 'ILIKE', `%${name}%`) // Пошук по імені, нечутливий до регістру
             .withGraphFetched('[wallet]'); // Завантажуємо всі залежності
 
     }

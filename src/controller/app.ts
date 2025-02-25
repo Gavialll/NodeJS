@@ -1,7 +1,9 @@
+import {consumeMessages} from "../Consumer";
+
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const app = express();
+export const app = express();
 const PORT: number = 3000;
 
 import '../../db';
@@ -13,8 +15,12 @@ app.use(express.json());
 // Add routes
 const userApi = require("./userRoutes");
 const orderApi = require("./orderRoutes");
+const rabbitApi = require("./rabbitRoutes");
 app.use("/api/users", userApi);
 app.use("/api/orders", orderApi);
+app.use("/api/rabbit", rabbitApi);
+
+consumeMessages()
 
 // Start server
 app.listen(PORT, () => {

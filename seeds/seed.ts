@@ -1,12 +1,12 @@
 import { Knex } from 'knex';
-import {fa, faker} from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 export async function seed(knex: Knex): Promise<void> {
     // Видаляємо всі старі записи
     await knex('orders').del();
     await knex('users').del();
 
-    // 🟢 Створюємо 30 користувачів
+    // Створюємо 30 користувачів
     const users = [];
     const wallets = [];
     for (let i = 0; i < 30; i++) {
@@ -31,7 +31,7 @@ export async function seed(knex: Knex): Promise<void> {
     // Додаємо гаманці в БД
     await knex('wallets').insert(wallets);
 
-    // 🟢 Створюємо 30 замовлень, випадково вибираючи `client` та `seller`
+    // Створюємо 30 замовлень, випадково вибираючи `client` та `seller`
     const orders = [];
     for (let i = 0; i < 30; i++) {
         const client = faker.helpers.arrayElement(users);
