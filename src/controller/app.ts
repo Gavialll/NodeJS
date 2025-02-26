@@ -7,6 +7,7 @@ export const app = express();
 const PORT: number = 3000;
 
 import '../../db';
+import {initPublisherConnection} from "../Publisher";
 
 // Middleware
 app.use(cors());
@@ -20,6 +21,7 @@ app.use("/api/users", userApi);
 app.use("/api/orders", orderApi);
 app.use("/api/rabbit", rabbitApi);
 
+initPublisherConnection()
 consumeMessages()
 
 // Start server

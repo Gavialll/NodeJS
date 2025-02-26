@@ -1,33 +1,30 @@
 import amqp from 'amqplib';
+import { v4 as uuidv4 } from 'uuid';
 
-export async function publishMessage(): Promise<void> {
+let dealChannel:amqp.Channel;
+
+/** Ініціалізує підключення до rabbit */
+export async function initPublisherConnection(): Promise<void> {
     try {
-        // Підключення до RabbitMQ
-        const connection = await amqp.connect('amqp://localhost');
-        const channel = await connection.createChannel();
+        const connection = await amqp.connect('amqp://rabbitmq');
+        dealChannel = await connection.createChannel();
+        const queue = 'deal_queue';
 
-        // Створення черги
-        const queue = 'test_queue';
-        await channel.assertQueue(queue, { durable: true });
-
-        // Повідомлення
-        const message = { text: 'Hello from RabbitMQ with TypeScript!' };
-
-        // Відправлення повідомлення
-        channel.sendToQueue(queue, Buffer.from(JSON.stringify(message)), {
-            persistent: true,
-        });
-
-        console.log('📤 Повідомлення відправлено:', message);
-
-        // Закриття з'єднання через 0.5 секунди
-        setTimeout(() => {
-            connection.close();
-            process.exit(0);
-        }, 500);
+        await dealChannel.assertQueue(queue, { durable: true });
+        console.log('Зєднання встановлено успішно');
     } catch (error) {
         console.error('❌ Помилка підключення до RabbitMQ:', error);
     }
 }
 
-publishMessage()
+/** Відправляє повідомлення в rabbit приймає на вхід повідомлення та чергу в яку потрібно відправити повідомлення */
+export function sendMessage(text: string, queue: string) {
+    const message = {
+        id: uuidv4(),
+        text: text,
+    };
+
+    dealChannel.sendToQueue(queue, Buffer.from(JSON.stringify(message)), {
+        persistent: true,
+    });
+}

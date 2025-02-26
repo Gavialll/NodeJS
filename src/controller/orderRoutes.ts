@@ -1,5 +1,6 @@
 import { Order } from "../entity/Order";
 import { orderRepository } from "../repository/OrderRepository";
+import {sendMessage} from "../Publisher";
 
 const orderRoutes = require("express").Router();
 const ORDER_NOT_FOUND = '⛔ Order not found'
@@ -88,14 +89,17 @@ orderRoutes.post("/deal/:id", (req: any, res: any) => {
             if (order && order.seller && order.client?.wallet) {
                 // Don't have a money
                 if (order.price >= order.client?.wallet?.money) {
+                    sendMessage("У клієнта недостатньо коштів для завершення угоди", "deal_queue")
                     res.status(400).json(NOT_ENOUGH_BALANCE);
                     return;
                 }
 
                 if (order.isActive) {
                     order.deal()
+                    sendMessage("Угода успішна", "deal_queue")
                     res.status(200).json(DEAL_SUCCESSFUL);
                 } else {
+                    sendMessage("Угоду можна укласти лише один раз", "deal_queue")
                     res.status(400).json(DEAL_IS_CLOSE);
                 }
             }
