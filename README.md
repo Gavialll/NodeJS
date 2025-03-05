@@ -33,7 +33,7 @@ kubectl version --client
 
 # 📦 Запуск сервісу в Kubernetes
 ```sh 
-kubectl apply -f nodejs-app-deployment.yaml -f nodejs-app-service.yaml -f postgres-deployment.yaml -f postgres-service.yaml
+kubectl apply -f nodejs-app-deployment.yaml -f nodejs-app-service.yaml -f postgres-deployment.yaml -f postgres-service.yaml -f rabbitmq-service.yaml -f rabbitmq-deployment.yaml
 ```
 #### Перевіримо статуси подів в Kubernetes
 ```sh 

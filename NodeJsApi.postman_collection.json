@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Andrii\",\r\n    \"age\": 24,\r\n    \"wallet\": {\r\n      \"money\": 7000\r\n    }\r\n}",
+							"raw": "{\r\n    \"name\": \"Ivan\",\r\n    \"age\": 24,\r\n    \"wallet\": {\r\n      \"money\": 7000\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,11 +24,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/users",
+							"raw": "localhost:30002/api/users",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"users"
@@ -55,11 +55,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/users",
+							"raw": "localhost:30002/api/users",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"users"
@@ -83,15 +83,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/users/hpK7_JQBsGxnh_iIkwOx",
+							"raw": "localhost:30002/api/users/39bbfa63-7acf-442e-8db0-34a467cc8c52",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"users",
-								"hpK7_JQBsGxnh_iIkwOx"
+								"39bbfa63-7acf-442e-8db0-34a467cc8c52"
 							]
 						}
 					},
@@ -115,15 +115,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/users/VJbC95QBuWuYOwdVq8Kg",
+							"raw": "localhost:30002/api/users/2dbd7dbc-c17d-47c6-8806-e6e2b24dfa41",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"users",
-								"VJbC95QBuWuYOwdVq8Kg"
+								"2dbd7dbc-c17d-47c6-8806-e6e2b24dfa41"
 							]
 						}
 					},
@@ -136,7 +136,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\r\n        \"id\": \"jZLD_JQBsGxnh_iI5wOO\",\r\n        \"name\": \"Andrii\",\r\n        \"age\": 24,\r\n        \"wallet\": {\r\n            \"money\": 21000\r\n        }\r\n    }",
+							"raw": "{\r\n    \"id\": \"27aaa3f6-e6e1-40a9-a65b-8a4345930477w\",\r\n    \"name\": \"Casey Lind1111\",\r\n    \"age\": 29,\r\n    \"created_at\": \"2025-02-24T13:35:07.600Z\",\r\n    \"wallet\": {\r\n        \"id\": \"f06bc1cd-6540-402d-b161-6358d08f73d3\",\r\n        \"user_id\": \"7ecdc0db-c8b7-4812-bec1-472cb4bde0fd\",\r\n        \"money\": 2111111,\r\n        \"created_at\": \"2025-02-24T13:35:07.669Z\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -144,11 +144,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/users",
+							"raw": "localhost:30002/api/users",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"users"
@@ -204,7 +204,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"description\": \"💻 Ноутбук Dell XPS 55555555555\",\r\n    \"age\": 50000,\r\n    \"isActive\": true,\r\n    \"client\": {\r\n        \"id\": \"hJK5_JQBsGxnh_iI0gOK\"\r\n    },\r\n    \"seller\": {\r\n        \"id\": \"g5K5_JQBsGxnh_iIvgMR\"\r\n    },\r\n    \"id\": \"hZK7_JQBsGxnh_iIBgMu\"\r\n}",
+							"raw": "{\r\n    \"id\": \"55b8ab37-b2b5-444b-8fa0-bb991359f8ce\",\r\n    \"price\": 4030,\r\n    \"description\": \"Fantastic Tuna designed with Bronze for educated performance\",\r\n    \"clientId\": \"1eda7d25-f2bf-4718-99fb-2e9d0ec80ef8\",\r\n    \"sellerId\": \"1560eebc-ee23-43fe-8dd3-30f2b9fd7598\",\r\n    \"isActive\": true,\r\n    \"createdAt\": \"2025-02-25T15:08:02.982Z\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -212,11 +212,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/orders",
+							"raw": "localhost:30002/api/orders",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"orders"
@@ -243,15 +243,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/orders/hZK7_JQBsGxnh_iIBgMu",
+							"raw": "localhost:30002/api/orders/55b8ab37-b2b5-444b-8fa0-bb991359f8ce",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"orders",
-								"hZK7_JQBsGxnh_iIBgMu"
+								"55b8ab37-b2b5-444b-8fa0-bb991359f8ce"
 							]
 						}
 					},
@@ -272,15 +272,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/orders/ZZLU-5QBsGxnh_iIqQOe",
+							"raw": "localhost:30002/api/orders/aeb3c019-a5fa-45f7-ad19-1baaa0a288db",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"orders",
-								"ZZLU-5QBsGxnh_iIqQOe"
+								"aeb3c019-a5fa-45f7-ad19-1baaa0a288db"
 							]
 						}
 					},
@@ -304,11 +304,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/orders?page=8&pageSize=2",
+							"raw": "localhost:30002/api/orders?page=4&pageSize=8",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"orders"
@@ -316,11 +316,11 @@
 							"query": [
 								{
 									"key": "page",
-									"value": "8"
+									"value": "4"
 								},
 								{
 									"key": "pageSize",
-									"value": "2"
+									"value": "8"
 								}
 							]
 						}
@@ -334,7 +334,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"price\": 1000,\r\n    \"description\": \"💻 Ноутбук Dell XPS 123456\",\r\n    \"client\": {\r\n        \"id\" : \"jZLD_JQBsGxnh_iI5wOO\"\r\n    },\r\n    \"seller\": {\r\n        \"id\": \"jJLD_JQBsGxnh_iI0wNO\"\r\n    },\r\n    \"isActive\": true\r\n}",
+							"raw": "{\r\n    \"price\": \"1000\",\r\n    \"description\": \"💻 Ноутбук Dell XPS 123456\",\r\n    \"client\": {\r\n        \"id\": \"9c5daada-28c0-4bda-9f80-2eeaccc57f45\"\r\n    },\r\n    \"seller\": {\r\n        \"id\": \"600cc70b-a1b9-478a-b0e9-5aa44e42e751\"\r\n    },\r\n    \"is_active\": true\r\n}\r\n\r\n\r\n{\r\n      id: '4d3d258c-e559-493b-bc8f-cb90f4c8ceec',\r\n      price: 111,\r\n      isActive: true,\r\n      description: 'Ноутбук',\r\n      clientId: 'a68f0bfa-eefb-49c9-aa9d-a0dc1716f571',\r\n      sellerId: '274815b2-7cac-425d-b398-7e4ab05c0905',\r\n      createdAt: '2025-02-24T15:07:34.273Z',\r\n      name: 'Description changed'\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -342,11 +342,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/orders",
+							"raw": "localhost:30002/api/orders",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"orders"
@@ -370,16 +370,16 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/orders/deal/jpLE_JQBsGxnh_iIWAOi",
+							"raw": "localhost:30002/api/orders/deal/3e644953-c3ce-420c-b9ed-9f97ecfe541c",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"orders",
 								"deal",
-								"jpLE_JQBsGxnh_iIWAOi"
+								"3e644953-c3ce-420c-b9ed-9f97ecfe541c"
 							]
 						}
 					},
@@ -400,11 +400,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/orders/_search?description=X",
+							"raw": "localhost:30002/api/orders/_search?description=Ноутбук",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "30002",
 							"path": [
 								"api",
 								"orders",
@@ -413,7 +413,7 @@
 							"query": [
 								{
 									"key": "description",
-									"value": "X"
+									"value": "Ноутбук"
 								}
 							]
 						}
@@ -423,10 +423,22 @@
 			]
 		},
 		{
-			"name": "elasticSearch",
+			"name": "rabbitMessages",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:30002/api/rabbit/messages",
+					"host": [
+						"localhost"
+					],
+					"port": "30002",
+					"path": [
+						"api",
+						"rabbit",
+						"messages"
+					]
+				}
 			},
 			"response": []
 		}
