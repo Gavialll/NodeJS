@@ -9,7 +9,6 @@ const PORT: number = 3000;
 import '../../db';
 import {initPublisherConnection} from "../Publisher";
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 

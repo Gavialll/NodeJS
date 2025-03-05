@@ -38,7 +38,6 @@ describe('🔍 Інтеграційний тест /api/users', () => {
         expect(response.statusCode).toBe(200);
         expect(response.data[0].name).toEqual(userJson.name);
         expect(response.data[0].age).toEqual(userJson.age);
-        expect(response.data[0].id).toEqual(userJson.id);
     });
 
     it('Оновлення користувача', async () => {

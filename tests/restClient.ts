@@ -5,7 +5,7 @@ export function makeRequest(method: string, path: string, body?: any): Promise<{
     return new Promise((resolve, reject) => {
         const options = {
             hostname: 'localhost',
-            port: 3000,
+            port: 30002,
             path,
             method,
             headers: {

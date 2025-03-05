@@ -66,9 +66,11 @@ describe('🔍 Інтеграційний тест /api/orders', () => {
         expect(response.statusCode).toBe(200);
         expect(response.data).toEqual("🤝 Deal successful");
 
+        console.log(response)
         response = await makeRequest('POST', '/api/orders/deal/' + orderJson.id);
         expect(response.statusCode).toBe(400);
         expect(response.data).toEqual("💳 Not enough balance");
+        console.log(response)
     });
 
     it('Оновлення замовлення', async () => {
